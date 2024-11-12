@@ -1,12 +1,9 @@
-streamlit==1.24.0
-pandas==2.0.3
-numpy==1.23.5
-matplotlib==3.7.1
-seaborn==0.12.2
-scikit-learn==1.2.2
-scipy==1.11.0  # Versión actualizada compatible con Python 3.12
-Pillow==9.5.0
-opencv-python==4.7.0.72
-requests==2.30.0
-flask==2.3.3
-pyyaml==6.0
+streamlit==1.23.0
+pathlib
+pandas>=1.4.0
+numpy
+matplotlib
+seaborn
+tensorflow
+scikit-learn
+
