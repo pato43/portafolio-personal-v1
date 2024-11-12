@@ -1,9 +1,2 @@
 streamlit==1.23.0
 pathlib
-pandas>=1.4.0
-numpy
-matplotlib
-seaborn
-tensorflow
-scikit-learn
-
