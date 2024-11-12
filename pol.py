@@ -56,7 +56,7 @@ st.markdown(
 
 # Barra lateral con imagen redonda y detalles de contacto
 st.sidebar.title("Alexander Eduardo Rojas Garay")
-st.sidebar.image("WhatsApp Image 2024-10-23 at 7.23.55 PM(1)_upscayl_6x_realesrgan-x4plus.png", width=140, caption="Data Scientist | Matemático y Físico")
+st.sidebar.image("files/WhatsApp Image 2024-10-23 at 7.23.55 PM(1).jpeg", width=140, caption="Data Scientist | Matemático y Físico")
 
 # Información de contacto
 st.sidebar.markdown("**📍 Ubicación:** CDMX")
@@ -90,7 +90,7 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Inicio", "Experiencia", "Ed
 # Sección de inicio
 with tab1:
     st.title("Alexander Eduardo Rojas Garay")
-    st.image("WhatsApp Image 2024-10-23 at 7.23.55 PM(1).jpeg", width=200)
+    st.image("files/WhatsApp Image 2024-10-23 at 7.23.55 PM(1).jpeg", width=200)
     st.markdown("## Data Scientist | Analista de Datos")
     st.write("Apasionado por el análisis y la ciencia de datos, con experiencia en machine learning y modelado predictivo. Me especializo en Python, SQL, y herramientas de visualización de datos como Looker Studio. Tengo un enfoque en soluciones basadas en datos, contribuyendo a resolver problemas complejos en áreas diversas.")
 
