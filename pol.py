@@ -145,7 +145,7 @@ with tab6:
     st.write("Análisis de resultados en estados clave con técnicas de ajuste de tendencias, momentum y promedios de encuestas.")
     st.write("[Ver proyecto completo](https://lnkd.in/e7DrEZEE)")
     
-    st.write("🔬 **El Nobel de Física 2024: Inteligencia Artificial y Física Computacional en Materiales 2D**")
+    st.write("🔬 **Articulo de Divulgación Sobre El Nobel de Física 2024: Inteligencia Artificial y Física Computacional en Materiales 2D**")
     st.write("Investigación sobre la aplicación de Machine Learning y modelado en materiales bidimensionales para el diseño de semiconductores.")
     st.write("[Ver publicación completa](https://lnkd.in/e6q5QQfg)")
     
@@ -158,4 +158,4 @@ with tab7:
     st.markdown("<div class='section-header'>Publicaciones</div>", unsafe_allow_html=True)
     st.write("📄 **Paper sobre Machine Learning en Física Experimental**")
     st.write("Aplicaciones de machine learning en física experimental, explorando algoritmos de predicción en fenómenos cuánticos.")
-
+    st.write("[Ver publicación completa](https://lnkd.in/e6q5QQfg)")
