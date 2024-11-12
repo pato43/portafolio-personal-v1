@@ -1,0 +1,11 @@
+
+---
+
+### requirements.txt
+
+Lista de requisitos para el archivo `requirements.txt`:
+
+```plaintext
+streamlit==1.24.0
+pillow
+pathlib
