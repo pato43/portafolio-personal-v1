@@ -1,3 +1,12 @@
 streamlit==1.24.0
-Pillow==9.5.0pathlib
-pathlib==1.0.1  # La versión de pathlib solo es necesaria si usas Python 2.x, ya que en Python 3+ es parte de la librería estándar
+pandas==2.0.3
+numpy==1.23.5
+matplotlib==3.7.1
+seaborn==0.12.2
+scikit-learn==1.2.2
+scipy==1.10.1
+Pillow==9.5.0
+opencv-python==4.7.0.72
+requests==2.30.0
+flask==2.3.3
+pyyaml==6.0
