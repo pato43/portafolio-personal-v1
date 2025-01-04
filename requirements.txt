@@ -1,2 +1,4 @@
 streamlit
 pathlib
+pandas
+plotly
