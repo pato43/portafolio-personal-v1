@@ -63,7 +63,7 @@ if Path(cv_es_path).is_file():
             data=pdf_es, 
             file_name="CV-AlexanderEduardoRojasGaray.pdf", 
             mime="application/pdf",
-            key="download_es"  # Identificador único
+            key="download_es_cv"  # Clave única basada en el idioma y tipo de archivo
         )
 if Path(cv_en_path).is_file():
     with open(cv_en_path, "rb") as pdf_en:
@@ -72,7 +72,7 @@ if Path(cv_en_path).is_file():
             data=pdf_en, 
             file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", 
             mime="application/pdf",
-            key="download_en"  # Identificador único
+            key="download_en_cv"  # Clave única basada en el idioma y tipo de archivo
         )
 
 # Tabs para la navegación
@@ -168,7 +168,7 @@ with tab8:
                 data=pdf_es, 
                 file_name="CV-AlexanderEduardoRojasGaray.pdf", 
                 mime="application/pdf",
-                key="download_es"
+                key="download_es_cv"
             )
     if Path(cv_en_path).is_file():
         with open(cv_en_path, "rb") as pdf_en:
@@ -177,5 +177,5 @@ with tab8:
                 data=pdf_en, 
                 file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", 
                 mime="application/pdf",
-                key="download_en"
+                key="download_en_cv"
             )
