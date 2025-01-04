@@ -1,14 +1,14 @@
 import streamlit as st
 from pathlib import Path
+import pandas as pd
+import plotly.express as px
 
 # Paleta de colores, estilos CSS y animaciones avanzadas
 st.markdown(
     """
     <style>
-        /* Fondo y estilo general */
         .main {background-color: #1c1c1c; color: #FFFFFF; font-family: 'Arial', sans-serif;}
 
-        /* Diseño y animaciones de botones */
         .stButton>button, .stDownloadButton>button {
             color: #FFFFFF; background-color: #0055a2; border-radius: 8px; padding: 12px;
             transition: all 0.3s ease; font-weight: bold; border: none;
@@ -19,32 +19,21 @@ st.markdown(
             box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
         }
 
-        /* Encabezados y texto con efectos de animación */
         .section-header {
-            font-size: 28px; font-weight: bold; color: #00aaff; margin-top: 20px;
+            font-size: 36px; font-weight: bold; color: #00aaff; margin-top: 20px;
             animation: slideIn 1s ease-out;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .content {
-            font-size: 18px; color: #CCCCCC;
-            animation: fadeIn 1.5s ease-in;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
         }
 
-        /* Imagen redonda de la barra lateral */
         .sidebar-image {
-            border-radius: 50%; width: 140px; height: 140px; display: block; margin: 0 auto 20px;
+            border-radius: 50%; width: 180px; height: 180px; display: block; margin: 0 auto 20px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
         }
         .sidebar-image:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
-        /* Animaciones */
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
         @keyframes slideIn {
             from {transform: translateX(-50px); opacity: 0;}
             to {transform: translateX(0); opacity: 1;}
@@ -56,7 +45,7 @@ st.markdown(
 
 # Barra lateral con imagen redonda y detalles de contacto
 st.sidebar.title("Alexander Eduardo Rojas Garay")
-st.sidebar.image("files/WhatsApp Image 2024-10-23 at 7.23.55 PM(1).jpeg", width=140, caption="Data Scientist | Matemático y Físico")
+st.sidebar.image("files/WhatsApp Image 2024-10-23 at 7.23.55 PM(1).jpeg", width=180, caption="Data Scientist | Matemático y Físico")
 
 # Información de contacto
 st.sidebar.markdown("**📍 Ubicación:** CDMX")
@@ -67,57 +56,48 @@ st.sidebar.markdown("**📧 Correo:** rojasalexander10@gmail.com")
 cv_es_path = "files/CV-AlexanderEduardoRojasGaray.pdf"
 cv_en_path = "files/CV-AlexanderEduardoRojasGaray-EN.pdf"
 
-# Mostrar botón para el CV en Español si el archivo existe
 if Path(cv_es_path).is_file():
     with open(cv_es_path, "rb") as pdf_es:
         st.sidebar.download_button(label="📄 Descargar CV en Español", data=pdf_es, file_name="CV-AlexanderEduardoRojasGaray.pdf", mime="application/pdf")
-else:
-    st.write("Archivo de CV en Español no encontrado.")
-
-# Mostrar botón para el CV en Inglés si el archivo existe
 if Path(cv_en_path).is_file():
     with open(cv_en_path, "rb") as pdf_en:
         st.sidebar.download_button(label="📄 Download CV in English", data=pdf_en, file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", mime="application/pdf")
-else:
-    st.write("Archivo de CV en Inglés no encontrado.")
-
-# Enlace a LinkedIn en la barra lateral
-st.sidebar.markdown("[🌐 Visita mi LinkedIn](https://www.linkedin.com/in/alexander-eduardo-rojas-garay-b17471235)", unsafe_allow_html=True)
 
 # Tabs para la navegación
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Inicio", "Experiencia", "Educación", "Certificaciones", "Habilidades", "Proyectos", "Publicaciones"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
+    "Inicio", "Experiencia", "Educación", "Certificaciones", "Habilidades", "Proyectos", "Visualizaciones", "Descargas"])
 
 # Sección de inicio
 with tab1:
     st.title("Alexander Eduardo Rojas Garay")
-    st.image("files/WhatsApp Image 2024-10-23 at 7.23.55 PM(1).jpeg", width=200)
+    st.image("files/WhatsApp Image 2024-10-23 at 7.23.55 PM(1).jpeg", width=240)
     st.markdown("## Data Scientist | Analista de Datos")
-    st.write("Apasionado por el análisis y la ciencia de datos, con experiencia en machine learning y modelado predictivo. Me especializo en Python, SQL, y herramientas de visualización de datos como Looker Studio. Tengo un enfoque en soluciones basadas en datos, contribuyendo a resolver problemas complejos en áreas diversas.")
+    st.write("Soy un científico de datos apasionado por aprovechar el poder de los datos para resolver problemas complejos. Tengo una sólida formación en física, matemáticas y programación, complementada con experiencia práctica en proyectos de machine learning y análisis predictivo.")
+    st.write("Mis contribuciones incluyen la creación de modelos de predicción, el desarrollo de plataformas web, y la optimización de procesos empresariales mediante la automatización. Mi objetivo es impulsar el cambio y la innovación a través de soluciones basadas en datos.")
 
 # Sección de Experiencia Profesional
 with tab2:
     st.markdown("<div class='section-header'>Experiencia Profesional</div>", unsafe_allow_html=True)
     st.write("**Instituto de Matemáticas (UNAM) - Data Scientist**")
-    st.write("Desarrollo de modelos de machine learning para proyectos complejos, aplicando técnicas avanzadas de análisis estadístico en investigación.")
-    st.write("• Optimización de modelos predictivos mediante TensorFlow y scikit-learn para soportar decisiones estratégicas.")
-    
+    st.write("En este rol, trabajé en el desarrollo de modelos predictivos para investigaciones avanzadas. Mis responsabilidades incluyeron el análisis de grandes volúmenes de datos, la aplicación de técnicas de machine learning como regresión logística y redes neuronales, y la presentación de resultados a investigadores y tomadores de decisiones.")
+
     st.write("**Colmena Space (UNAM) - Machine Learning Engineer**")
-    st.write("Responsable de crear modelos de predicción y simulación para optimizar trayectorias de sondas lunares, mejorando la eficiencia en planificación de misiones.")
-    st.write("• Trabajo en la nube con AWS y Azure para escalar soluciones de machine learning y garantizar la eficiencia de cálculo.")
+    st.write("En este proyecto aeroespacial, diseñé simulaciones para trayectorias de sondas lunares, optimizando el uso de recursos computacionales. Implementé algoritmos de machine learning para mejorar la precisión de las simulaciones y trabajé en colaboración con equipos interdisciplinarios para garantizar el éxito de las misiones.")
 
     st.write("**Asociación Aeroespacial de la Facultad de Ingeniería (UNAM) - Analista de Datos**")
-    st.write("Análisis y visualización de datos experimentales para optimizar resultados en lanzamientos de cohetes, utilizando Python y herramientas numéricas.")
-    st.write("• Implementación de análisis estadísticos para mejorar la precisión de experimentos en lanzamientos.")
+    st.write("Analicé datos experimentales de pruebas de cohetes, proporcionando insights críticos para optimizar el diseño y las estrategias de lanzamiento. Esto incluyó la creación de dashboards interactivos para monitorear el rendimiento en tiempo real.")
 
     st.write("**Freelancer - Desarrollador Web**")
-    st.write("Desarrollo de plataformas web dinámicas y optimización para sitios de proyectos tecnológicos y comerciales.")
-    st.write("• Proyectos destacados incluyen el desarrollo de infrax.mx, Tecistem.com, y masmigrar.com.")
+    st.write("He trabajado en proyectos de desarrollo web que abarcan desde páginas informativas hasta plataformas e-commerce. Entre los proyectos destacados se incluyen infrax.mx, una herramienta de gestión empresarial, y tecistem.com, un sitio educativo para cursos tecnológicos.")
+
+    st.write("**Holtmont México - Automatización de Procesos**")
+    st.write("Desarrollé un sistema de automatización utilizando Google Sheets y Apps Script, logrando una mayor eficiencia en la asignación de tareas y la consolidación de datos. Este proyecto redujo significativamente los tiempos de respuesta y mejoró la colaboración entre equipos.")
 
 # Sección de Educación
 with tab3:
     st.markdown("<div class='section-header'>Educación</div>", unsafe_allow_html=True)
     st.write("**Licenciatura en Física y Matemáticas - Universidad Nacional Autónoma de México (UNAM)** (2019 - 2024)")
-    st.write("Formación sólida en física teórica y aplicada, análisis matemático, álgebra y programación. Participación en proyectos de investigación, utilizando habilidades cuantitativas y analíticas para resolver problemas complejos.")
+    st.write("Mi formación académica se centró en el estudio de fenómenos físicos y matemáticos, complementado con cursos avanzados en programación y análisis de datos. Participé en investigaciones sobre simulación de sistemas cuánticos y diseño de algoritmos eficientes.")
 
 # Sección de Certificaciones
 with tab4:
@@ -142,20 +122,36 @@ with tab5:
 with tab6:
     st.markdown("<div class='section-header'>Proyectos Destacados</div>", unsafe_allow_html=True)
     st.write("🔍 **Predicciones de las Elecciones de EE. UU. 2024 usando Machine Learning**")
-    st.write("Análisis de resultados en estados clave con técnicas de ajuste de tendencias, momentum y promedios de encuestas.")
+    st.write("En este proyecto, utilicé modelos de machine learning para analizar tendencias electorales en estados clave de Estados Unidos. La combinación de datos históricos y técnicas avanzadas de predicción permitió identificar posibles resultados con un alto nivel de precisión, apoyando a analistas políticos en la toma de decisiones estratégicas.")
     st.write("[Ver proyecto completo](https://lnkd.in/e7DrEZEE)")
-    
+
     st.write("🔬 **Articulo de Divulgación Sobre El Nobel de Física 2024: Inteligencia Artificial y Física Computacional en Materiales 2D**")
-    st.write("Investigación sobre la aplicación de Machine Learning y modelado en materiales bidimensionales para el diseño de semiconductores.")
+    st.write("Este artículo aborda el impacto de la inteligencia artificial en el diseño de materiales bidimensionales. Exploré cómo los algoritmos de machine learning pueden acelerar el descubrimiento de nuevos materiales y optimizar sus propiedades para aplicaciones tecnológicas avanzadas.")
     st.write("[Ver publicación completa](https://lnkd.in/e6q5QQfg)")
-    
+
     st.write("🔗 **Aplicación de Predicción de Enfermedades Dentales**")
-    st.write("Desarrollo de un sistema de reconocimiento de anomalías en radiografías panorámicas con YOLO V5 y Flask.")
+    st.write("Diseñé una herramienta basada en deep learning que analiza radiografías panorámicas para detectar enfermedades dentales. Utilizando YOLO V5 y Flask, el sistema permite a los odontólogos realizar diagnósticos más rápidos y precisos, mejorando la atención al paciente.")
     st.write("[Ver detalles del proyecto](https://github.com/usuario/dental-disease-detection)")
 
-# Sección de Publicaciones
+    st.write("💼 **Digitalización del Mercado Xochiquetzal**")
+    st.write("Dirigí la creación de una plataforma e-commerce para empoderar a los comerciantes locales del Mercado Xochiquetzal en Tenancingo. Esta iniciativa mejoró la visibilidad de los productos en línea, incrementando las ventas y fortaleciendo la economía local.")
+
+# Sección de Visualizaciones
 with tab7:
-    st.markdown("<div class='section-header'>Publicaciones</div>", unsafe_allow_html=True)
-    st.write("📄 **Paper sobre Machine Learning en Física Experimental**")
-    st.write("Aplicaciones de machine learning en física experimental, explorando algoritmos de predicción en fenómenos cuánticos.")
-    st.write("[Ver publicación completa](https://lnkd.in/e6q5QQfg)")
+    st.markdown("<div class='section-header'>Visualizaciones Interactivas</div>", unsafe_allow_html=True)
+    data = pd.DataFrame({
+        "Habilidad": ["Python", "SQL", "Machine Learning", "Visualización", "Cloud"],
+        "Nivel": [95, 90, 85, 80, 75]
+    })
+    fig = px.bar(data, x="Habilidad", y="Nivel", title="Dominio de Habilidades", labels={"Nivel": "Porcentaje (%)"})
+    st.plotly_chart(fig)
+
+# Sección de Descargas
+with tab8:
+    st.markdown("<div class='section-header'>Descarga mis CVs</div>", unsafe_allow_html=True)
+    if Path(cv_es_path).is_file():
+        with open(cv_es_path, "rb") as pdf_es:
+            st.download_button(label="📄 Descargar CV en Español", data=pdf_es, file_name="CV-AlexanderEduardoRojasGaray.pdf", mime="application/pdf")
+    if Path(cv_en_path).is_file():
+        with open(cv_en_path, "rb") as pdf_en:
+            st.download_button(label="📄 Download CV in English", data=pdf_en, file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", mime="application/pdf")
