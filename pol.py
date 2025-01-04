@@ -58,10 +58,22 @@ cv_en_path = "files/CV-AlexanderEduardoRojasGaray-EN.pdf"
 
 if Path(cv_es_path).is_file():
     with open(cv_es_path, "rb") as pdf_es:
-        st.sidebar.download_button(label="📄 Descargar CV en Español", data=pdf_es, file_name="CV-AlexanderEduardoRojasGaray.pdf", mime="application/pdf")
+        st.sidebar.download_button(
+            label="📄 Descargar CV en Español", 
+            data=pdf_es, 
+            file_name="CV-AlexanderEduardoRojasGaray.pdf", 
+            mime="application/pdf",
+            key="download_es"  # Identificador único
+        )
 if Path(cv_en_path).is_file():
     with open(cv_en_path, "rb") as pdf_en:
-        st.sidebar.download_button(label="📄 Download CV in English", data=pdf_en, file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", mime="application/pdf")
+        st.sidebar.download_button(
+            label="📄 Download CV in English", 
+            data=pdf_en, 
+            file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", 
+            mime="application/pdf",
+            key="download_en"  # Identificador único
+        )
 
 # Tabs para la navegación
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
@@ -151,7 +163,19 @@ with tab8:
     st.markdown("<div class='section-header'>Descarga mis CVs</div>", unsafe_allow_html=True)
     if Path(cv_es_path).is_file():
         with open(cv_es_path, "rb") as pdf_es:
-            st.download_button(label="📄 Descargar CV en Español", data=pdf_es, file_name="CV-AlexanderEduardoRojasGaray.pdf", mime="application/pdf")
+            st.download_button(
+                label="📄 Descargar CV en Español", 
+                data=pdf_es, 
+                file_name="CV-AlexanderEduardoRojasGaray.pdf", 
+                mime="application/pdf",
+                key="download_es"
+            )
     if Path(cv_en_path).is_file():
         with open(cv_en_path, "rb") as pdf_en:
-            st.download_button(label="📄 Download CV in English", data=pdf_en, file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", mime="application/pdf")
+            st.download_button(
+                label="📄 Download CV in English", 
+                data=pdf_en, 
+                file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", 
+                mime="application/pdf",
+                key="download_en"
+            )
