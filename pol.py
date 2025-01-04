@@ -52,28 +52,36 @@ st.sidebar.markdown("**📍 Ubicación:** CDMX")
 st.sidebar.markdown("**📞 Teléfono:** 722-559-7963")
 st.sidebar.markdown("**📧 Correo:** rojasalexander10@gmail.com")
 
-# Botones de descarga de CV en español e inglés
+# Información del CV
 cv_es_path = "files/CV-AlexanderEduardoRojasGaray.pdf"
 cv_en_path = "files/CV-AlexanderEduardoRojasGaray-EN.pdf"
 
-if Path(cv_es_path).is_file():
-    with open(cv_es_path, "rb") as pdf_es:
-        st.sidebar.download_button(
-            label="📄 Descargar CV en Español", 
-            data=pdf_es, 
-            file_name="CV-AlexanderEduardoRojasGaray.pdf", 
-            mime="application/pdf",
-            key="download_es_cv"  # Clave única basada en el idioma y tipo de archivo
-        )
-if Path(cv_en_path).is_file():
-    with open(cv_en_path, "rb") as pdf_en:
-        st.sidebar.download_button(
-            label="📄 Download CV in English", 
-            data=pdf_en, 
-            file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", 
-            mime="application/pdf",
-            key="download_en_cv"  # Clave única basada en el idioma y tipo de archivo
-        )
+# Función para crear botones de descarga
+def crear_boton_descarga(file_path, label, file_name, unique_key):
+    if Path(file_path).is_file():
+        with open(file_path, "rb") as file_data:
+            st.sidebar.download_button(
+                label=label,
+                data=file_data,
+                file_name=file_name,
+                mime="application/pdf",
+                key=unique_key,  # Clave única para evitar conflictos
+            )
+
+# Botones de descarga de CV en español e inglés
+crear_boton_descarga(
+    cv_es_path,
+    "📄 Descargar CV en Español",
+    "CV-AlexanderEduardoRojasGaray.pdf",
+    unique_key="boton_es_cv",
+)
+
+crear_boton_descarga(
+    cv_en_path,
+    "📄 Download CV in English",
+    "CV-AlexanderEduardoRojasGaray-EN.pdf",
+    unique_key="boton_en_cv",
+)
 
 # Tabs para la navegación
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
@@ -161,21 +169,16 @@ with tab7:
 # Sección de Descargas
 with tab8:
     st.markdown("<div class='section-header'>Descarga mis CVs</div>", unsafe_allow_html=True)
-    if Path(cv_es_path).is_file():
-        with open(cv_es_path, "rb") as pdf_es:
-            st.download_button(
-                label="📄 Descargar CV en Español", 
-                data=pdf_es, 
-                file_name="CV-AlexanderEduardoRojasGaray.pdf", 
-                mime="application/pdf",
-                key="download_es_cv"
-            )
-    if Path(cv_en_path).is_file():
-        with open(cv_en_path, "rb") as pdf_en:
-            st.download_button(
-                label="📄 Download CV in English", 
-                data=pdf_en, 
-                file_name="CV-AlexanderEduardoRojasGaray-EN.pdf", 
-                mime="application/pdf",
-                key="download_en_cv"
-            )
+    crear_boton_descarga(
+        cv_es_path,
+        "📄 Descargar CV en Español",
+        "CV-AlexanderEduardoRojasGaray.pdf",
+        unique_key="boton_es_cv_descarga",
+    )
+
+    crear_boton_descarga(
+        cv_en_path,
+        "📄 Download CV in English",
+        "CV-AlexanderEduardoRojasGaray-EN.pdf",
+        unique_key="boton_en_cv_descarga",
+    )
